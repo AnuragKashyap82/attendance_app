@@ -60,18 +60,22 @@ class reportt extends StatelessWidget {
               // ... other header elements
               pw.SizedBox(height: 20),
               pw.Table(
-                defaultColumnWidth: pw.FixedColumnWidth(120.0),
+                defaultColumnWidth: pw.FixedColumnWidth(50.0),
                 border: pw.TableBorder.all(
                   style: pw.BorderStyle.solid,
-                  width: 1,
+                  width: 0.1,
                 ),
                 children: [
                   pw.TableRow(
+                    decoration: pw.BoxDecoration(
+                      color: PdfColors.blue200,
+
+                    ),
                     children: [
                       pw.Column(
                         mainAxisAlignment: pw.MainAxisAlignment.center,
                         children: [
-                          pw.Text('Index', style: pw.TextStyle(fontSize: 15)),
+                          pw.Text('Student Id', style: pw.TextStyle(fontSize: 15)),
                         ],
                       ),
                       pw.Column(
@@ -80,11 +84,25 @@ class reportt extends StatelessWidget {
                           pw.Text('Name', style: pw.TextStyle(fontSize: 15)),
                         ],
                       ),
+                      pw.Column(
+                        mainAxisAlignment: pw.MainAxisAlignment.center,
+                        children: [
+                          pw.Text('Present/Absent', style: pw.TextStyle(fontSize: 15)),
+                        ],
+                      ),
                     ],
                   ),
                   for (var index = 0; index < currentPageItems.length; index++)
                     pw.TableRow(
                       children: [
+                        pw.Column(
+                          children: [
+                            pw.Text(
+                              (startIdx + index + 1).toString(),
+                              style: pw.TextStyle(fontSize: 15),
+                            ),
+                          ],
+                        ),
                         pw.Column(
                           children: [
                             pw.Text(
@@ -112,9 +130,6 @@ class reportt extends StatelessWidget {
         ),
       );
     }
-
     return doc.save();
   }
-
-
 }
